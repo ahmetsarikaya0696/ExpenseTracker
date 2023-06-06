@@ -5,7 +5,9 @@ import ExpensesFilter from "./ExpensesFilter";
 import "./Expenses.css";
 
 const Expenses = (props) => {
-  const years = props.expenses.map((expense) => new Date(expense.date).getFullYear());
+  const years = props.expenses.map((expense) =>
+    new Date(expense.date).getFullYear()
+  );
   const distinctYears = years.reduce((accumulator, currentValue) => {
     if (!accumulator.includes(currentValue)) {
       accumulator.push(currentValue);
@@ -23,6 +25,15 @@ const Expenses = (props) => {
     return expenseYear == filteredYear;
   });
 
+  const expensesContent = filteredExpenses.map((expense) => (
+    <ExpenseItem
+      key={expense.id}
+      title={expense.title}
+      amount={expense.amount}
+      date={expense.date}
+    />
+  ));
+
   return (
     <Card className="expenses">
       <ExpensesFilter
@@ -31,14 +42,7 @@ const Expenses = (props) => {
         onFilterChange={filterChangeHandler}
       />
 
-      {filteredExpenses.map((expense) => (
-        <ExpenseItem
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />
-      ))}
+      {expensesContent}
     </Card>
   );
 };
