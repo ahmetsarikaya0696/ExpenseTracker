@@ -26,12 +26,14 @@ const Expenses = (props) => {
   });
 
   const expensesContent = filteredExpenses.map((expense) => (
-    <ExpenseItem
-      key={expense.id}
-      title={expense.title}
-      amount={expense.amount}
-      date={expense.date}
-    />
+    <li>
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    </li>
   ));
 
   return (
@@ -42,7 +44,7 @@ const Expenses = (props) => {
         onFilterChange={filterChangeHandler}
       />
 
-      {expensesContent}
+      <ul className="expenses-list">{expensesContent}</ul>
     </Card>
   );
 };
