@@ -26,7 +26,7 @@ const Expenses = (props) => {
   });
 
   const expensesContent = filteredExpenses.map((expense) => (
-    <li>
+    <li key={expense.id}>
       <ExpenseItem
         key={expense.id}
         title={expense.title}
