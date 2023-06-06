@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
 import Card from "../UI/Card";
@@ -13,9 +13,15 @@ const NewExpense = (props) => {
     props.onAddExpense(expenseData);
   };
 
+  const [isVisible, setIsVisible] = useState(false);
+  const clickHandler = () => {
+    setIsVisible(!isVisible);
+  };
+
   return (
     <Card className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {!isVisible && <button type="button" onClick={clickHandler}>Show Form</button>}
+      {isVisible && <ExpenseForm onCancel={clickHandler} onSaveExpenseData={saveExpenseDataHandler} />}
     </Card>
   );
 };
