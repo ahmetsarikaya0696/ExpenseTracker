@@ -1,0 +1,9 @@
+.headline {
+  margin: 2rem auto;
+  color: white;
+  width: 50rem;
+  max-width: 95%;
+  text-align: center;
+  background-color: #40005d;
+  border: 1px solid white;
+}
