@@ -12,7 +12,7 @@ const ExpenseFilter = (props) => {
         <label>Filter by year</label>
         <select value={props.selectedYear} onChange={selectChangeHandler}>
           {props.years.map((year) => (
-            <option value={year}>{year.toString()}</option>
+            <option key={year} value={year}>{year.toString()}</option>
           ))}
         </select>
       </div>
