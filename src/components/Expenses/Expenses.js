@@ -23,7 +23,7 @@ const Expenses = (props) => {
 
   const filteredExpenses = props.expenses.filter((expense) => {
     const expenseYear = new Date(expense.date).getFullYear();
-    return expenseYear == filteredYear;
+    return expenseYear === +filteredYear;
   });
 
   const expensesContent = filteredExpenses.map((expense) => (
